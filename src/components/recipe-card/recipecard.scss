@@ -15,6 +15,15 @@
 		max-width: 100%;
 		height: auto;
 	}
+
+	.card-body {
+		font-size: 16px;
+		font-weight: 400;
+		color: #343434;
+		padding: 10px 8px 10px 8px;
+		min-height: 130px;
+		box-sizing: border-box;
+	}
 }
 
 // Extra small devices (portrait phones, less than 576px)

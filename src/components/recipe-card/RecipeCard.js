@@ -4,11 +4,11 @@ import './recipecard.scss';
 
 const RecipeCard = ({id = '', name = '', thumb = '', headline = '', calories = '', time = '', rating = ''}) => (
 	<div className="card">
-		<Link to={`/athlete/${id}`}>
+		<Link to={`/recipe/${id}`}>
 			<img src={thumb} className="card-img-top" alt={name} />
 		</Link>
 		<div className="card-body">
-			<Link to={`/athlete/${id}`}>
+			<Link to={`/recipe/${id}`}>
 				<h5 className="card-title">{name}</h5>
 			</Link>
 			<p className="card-text">{headline}</p>

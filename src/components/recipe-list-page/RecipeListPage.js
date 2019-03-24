@@ -1,19 +1,18 @@
-import React from 'react';
-import GenericList from '../generic-list/GenericList';
-import RecipeCard from '../recipe-card/RecipeCard';
+import React, {Component} from 'react';
 import {fetchRecipes} from '../../actions/recipe-actions';
 import {connect} from 'react-redux';
+import RecipeList from '../recipe-list/RecipeList';
 
-class RecipeListPage extends React.Component {
+class RecipeListPage extends Component {
 	componentDidMount() {
-		let {fetchRecipes} = this.props;
-		fetchRecipes();
+		//let {fetchRecipes} = this.props;
+		//fetchRecipes();
 	}
 
 	render() {
 		let {recipes = [], loadingRecipes = false} = this.props;
 		if(loadingRecipes) return <div>Loading ...</div>;
-		return <GenericList list={recipes} ItemComp={RecipeCard} />;
+		return <RecipeList list={recipes} />;
 	}
 }
 

@@ -1,4 +1,11 @@
-import {FETCH_RECIPE_FAILURE, FETCH_RECIPE_REQUEST, FETCH_RECIPE_SUCCESS} from './action-types';
+import {
+	FETCH_RECIPE_FAILURE,
+	FETCH_RECIPE_REQUEST,
+	FETCH_RECIPE_SUCCESS,
+	SELECT_RECIPE,
+	SET_FAVOURITE,
+	UPDATE_STAR_RATING
+} from './action-types';
 import {recipeService} from '../services/recipe.service';
 
 export function fetchRecipes() {
@@ -16,3 +23,23 @@ export function fetchRecipes() {
 			);
 	};
 }
+
+export const selectRecipe = (id) => {
+	return (dispatch, getState) => {
+		let {recipes: {recipes = []}} = getState();
+		dispatch({
+			type: SELECT_RECIPE,
+			payload: {selectedRecipe: recipes.find(r => r.id === id) || {}}
+		});
+	};
+};
+
+export const setFavourite = (id) => ({
+	type: SET_FAVOURITE,
+	payload: {id}
+});
+
+export const setStarRating = (id) => ({
+	type: UPDATE_STAR_RATING,
+	payload: {id}
+});
