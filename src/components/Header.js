@@ -2,14 +2,12 @@ import React from 'react';
 import logo from '../logo.svg';
 import './header.scss';
 
-const Header = () => {
-	return (
-		<div className="App">
-			<header className="App-header">
-				<img src={logo} className="App-logo" alt="logo" />
-			</header>
-		</div>
-	);
-};
+const Header = () => (
+	<div className="App">
+		<header className="App-header">
+			<img src={logo} className="App-logo" alt="logo" />
+		</header>
+	</div>
+);
 
 export default Header;

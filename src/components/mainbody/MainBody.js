@@ -3,6 +3,7 @@ import {Switch, Route} from 'react-router';
 import NotFoundPage from '../not-found-page/NotFoundPage';
 import RecipeListPage from '../recipe-list-page/RecipeListPage';
 import RecipePage from '../recipe-page/RecipePage';
+import './mainbody.scss';
 
 
 const MainBody = () => (
