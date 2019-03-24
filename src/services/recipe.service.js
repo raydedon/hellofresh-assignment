@@ -3,7 +3,7 @@ export const recipeService = {
 };
 
 function fetchRecipes() {
-	return fetch('https://s3-eu-west-1.amazonaws.com/frontend-dev-test/recipes.json')
+	return fetch('http://localhost:5000/api/recipes')
 		.then(res => res.json())
 		.then(recipes => recipes);
 }

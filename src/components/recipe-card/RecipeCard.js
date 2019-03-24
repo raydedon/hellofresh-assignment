@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import './recipecard.scss';
 
 const RecipeCard = ({id = '', name = '', thumb = '', headline = '', calories = '', time = '', rating = ''}) => (
 	<div className="card">
