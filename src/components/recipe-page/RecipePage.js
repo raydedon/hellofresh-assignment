@@ -2,18 +2,18 @@ import React, {Component} from 'react';
 import './recipepage.scss';
 import {selectRecipe} from '../../actions/recipe-actions';
 import {connect} from 'react-redux';
+import GenericList from "../generic-list/GenericList";
 
 class RecipePage extends Component {
 	componentDidMount() {
 		let {selectRecipe, match} = this.props;
 		selectRecipe(match.params.id);
 	}
-
+	
 	render() {
 		let {
 			id = '',
 			name = '',
-			thumb = '',
 			headline = '',
 			calories = '',
 			carbos,
@@ -25,24 +25,28 @@ class RecipePage extends Component {
 			time = '',
 			rating = '',
 			image,
-			ingredients
+			ingredients = []
 		} = this.props.selectedRecipe;
 		return 	(
 			<div className="recipe-detail">
 				<div className="recipe-image">
 					<img src={image} className="reciepe-detail-img-top" alt={name} />
 				</div>
-				<div className="recipe-detail-body">
+				<div className="recipe-detail-body responsive-content">
 					<div className="recipe-detail-wrapper">
-						<h5 className="card-title">{name}</h5>
-						<p className="card-text">{headline}</p>
+						<h3 className="recipe-detail-title">{name}</h3>
+						<p className="recipe-detail-text">{headline}</p>
+						<p className="recipe-detail-desc">{description}</p>
+						<div className="recipe-detail-more">
+							<NameValePair label="Cooking difficulty" value={difficulty} />
+							<NameValePair label="Preparation Time" value={time} />
+							<NameValePair label="Carbohydrate" value={carbos} />
+							<NameValePair label="Fats" value={fats} />
+							<NameValePair label="Proteins" value={proteins} />
+							<NameValePair label="Calories" value={calories} />
+						</div>
+						<IngerdientList list={ingredients} className="ingredients-list" />
 						<div className="card-footer">
-							<div className="fela-fzx7h2">
-								<p className="fela-bnxrld">
-									<span className="fela-18emzam">{calories}</span>
-									<span>{time}</span>
-								</p>
-							</div>
 							<div className="rating">{rating}</div>
 						</div>
 					</div>
@@ -59,3 +63,18 @@ const mapDispatchToProps = dispatch => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(RecipePage);
+
+const NameValePair = ({label, value}) => ([
+	<span className="label" key={`${label}-label`}>{label}</span>,
+	<span className="value" key={`${label}-value`}>{value}</span>
+]);
+
+const IngerdientList = ({list = [], className = ''}) => (
+	<div className={className}>
+		<div className="label">Ingredients</div>
+		<div className="list-container">
+			{list.map((i, index) => <div className="ingredient" key={index}>{i}</div>)}
+		</div>
+	</div>
+);
+
