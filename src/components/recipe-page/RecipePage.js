@@ -2,17 +2,15 @@ import React, {Component} from 'react';
 import './recipepage.scss';
 import {selectRecipe} from '../../actions/recipe-actions';
 import {connect} from 'react-redux';
-import GenericList from "../generic-list/GenericList";
 
 class RecipePage extends Component {
 	componentDidMount() {
 		let {selectRecipe, match} = this.props;
 		selectRecipe(match.params.id);
 	}
-	
+
 	render() {
 		let {
-			id = '',
 			name = '',
 			headline = '',
 			calories = '',
@@ -21,7 +19,6 @@ class RecipePage extends Component {
 			proteins,
 			description,
 			difficulty,
-			favorites,
 			time = '',
 			rating = '',
 			image,
